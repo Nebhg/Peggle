@@ -23,5 +23,17 @@ public class CannonScript : MonoBehaviour
     void FaceMouse()
     {
         transform.up = direction;
+        
+        /*
+        gameObject.transform.rotation =
+        gameObject.transform.rotation.eulerAngles.z > 90 ?
+        Quaternion.Euler(0, 0, 90) :
+        gameObject.transform.rotation.eulerAngles.z < -90 ?
+        Quaternion.Euler(0, 0, -90) :
+        gameObject.transform.rotation;
+        */
+
+        gameObject.transform.rotation = 
+        Quaternion.Euler(0,0,Mathf.Clamp(gameObject.transform.rotation.eulerAngles.z - 180, -85, 85));
     }
 }

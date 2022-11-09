@@ -32,7 +32,7 @@ public class Shoot : MonoBehaviour
         if(ammo > 0 && canFire)
         {
             GameObject PinballIns = Instantiate(Pinball,transform.position,transform.rotation);
-            PinballIns.GetComponent<Rigidbody2D>().velocity = transform.up * LaunchForce;
+            PinballIns.GetComponent<Rigidbody2D>().velocity = -transform.up * LaunchForce;
             PinballIns.GetComponent<Ball>().shooter = this;
             ammo--;
 

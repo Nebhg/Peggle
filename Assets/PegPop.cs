@@ -5,6 +5,13 @@ using UnityEngine;
 public class PegPop : MonoBehaviour
 {
     public static int points = 0;
+    public bool isTarget = false;
+
+    [SerializeField]
+    private Material targetMaterial;
+
+    [SerializeField]
+    private Material nonTargetMaterial;
 
     // Start is called before the first frame update
     void Start()
@@ -28,5 +35,10 @@ public class PegPop : MonoBehaviour
             Debug.Log("You have won!");
         }
         
+    }
+
+    public void changeToTarget(){
+        gameObject.GetComponent<SpriteRenderer>().material = targetMaterial;
+        isTarget = true;
     }
 }
