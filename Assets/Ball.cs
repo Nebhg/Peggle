@@ -19,6 +19,10 @@ public class Ball : MonoBehaviour
         if(transform.position.y < 0){
             shooter.canFire = true;
             Destroy(gameObject);
+            if(Shoot.ammo <= 0){
+                Debug.Log("Out of ammo!");
+                GameController.GameLose();
+            }
         }
     }
 

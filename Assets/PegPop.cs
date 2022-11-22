@@ -5,13 +5,16 @@ using UnityEngine;
 public class PegPop : MonoBehaviour
 {
     public static int points = 0;
-    public bool isTarget = false;
+    public PegSelector.PegType type = PegSelector.PegType.NonTarget;
 
     [SerializeField]
     private Material targetMaterial;
 
     [SerializeField]
     private Material nonTargetMaterial;
+
+    [SerializeField]
+    private Material powerupMaterial;
 
     // Start is called before the first frame update
     void Start()
@@ -30,15 +33,21 @@ public class PegPop : MonoBehaviour
         points += 10;
         //Debug.Log("popped! Total Points: " + points);
         gameObject.SetActive(false);
-        if(points >= 250)
+        PegSelector.targetCount -= type == PegSelector.PegType.Target ? 1 : 0;
+        if(PegSelector.targetCount <= 0)
         {
-            Debug.Log("You have won!");
+            GameController.GameWin();
         }
         
     }
 
     public void changeToTarget(){
         gameObject.GetComponent<SpriteRenderer>().material = targetMaterial;
-        isTarget = true;
+        type = PegSelector.PegType.Target;
+    }
+
+    public void changeToPowerup(){
+        gameObject.GetComponent<SpriteRenderer>().material = powerupMaterial;
+        type = PegSelector.PegType.Powerup;
     }
 }

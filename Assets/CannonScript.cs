@@ -14,6 +14,11 @@ public class CannonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //get point on plane y=0
+        Plane plane = new Plane(Vector3.up, Vector3.zero);
+
         Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 CannonPos = transform.position;
         direction = MousePos - CannonPos; //calculate direction

@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937216589a53bc745a4fa86ce3cf2dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTarget: 0
+  type: 1
   targetMaterial: {fileID: 2100000, guid: 90663755973eed844a06c73f55d8cdbb, type: 2}
   nonTargetMaterial: {fileID: 2100000, guid: 5430fa2ca9bc0c645a1eb8d30d09cb83, type: 2}
+  powerupMaterial: {fileID: 2100000, guid: d080eb4bb4fdb6d4da30a330fcce80d0, type: 2}
