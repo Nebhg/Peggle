@@ -7,7 +7,7 @@ public class PegSelector : MonoBehaviour
 
     public static List<GameObject> pegs;
     public static List<GameObject> targets;
-    public static int targetCount = 99999999;
+    public static int targetCount = 0;
     // Start is called before the first frame update
     void Start()
     {
