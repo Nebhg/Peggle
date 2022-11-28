@@ -10,8 +10,8 @@ public class UiController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI ammoText;
 
-    
-
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +27,19 @@ public class UiController : MonoBehaviour
 
     private void OnEnable() {
         Shoot.OnShoot += updateAmmo;
+        PegPop.OnPop += updateScore;
     }
 
     private void OnDisable() {
         Shoot.OnShoot -= updateAmmo;
+        PegPop.OnPop -= updateScore;
     }
 
     void updateAmmo(){
         ammoText.text = Shoot.ammo.ToString();
+    }
+
+    void updateScore(){
+        scoreText.text = GameController.GetScore().ToString();
     }
 }

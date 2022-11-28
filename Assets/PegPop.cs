@@ -7,6 +7,9 @@ public class PegPop : MonoBehaviour
     public static int points = 0;
     public PegSelector.PegType type = PegSelector.PegType.NonTarget;
 
+    public delegate void PointAquired();
+    public static event PointAquired OnPop;
+
     [SerializeField]
     private Material targetMaterial;
 
@@ -19,7 +22,7 @@ public class PegPop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        OnPop();
     }
 
     // Update is called once per frame
@@ -30,7 +33,9 @@ public class PegPop : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        points += 10;
+        GameController.AddScore(10);
+
+        OnPop();
         //Debug.Log("popped! Total Points: " + points);
         gameObject.SetActive(false);
         PegSelector.targetCount -= type == PegSelector.PegType.Target ? 1 : 0;

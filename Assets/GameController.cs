@@ -30,15 +30,24 @@ public class GameController : MonoBehaviour
         return score;
     }
 
+    public static int ResetScore()
+    {
+        score = 0;
+        return score;
+    }
+
     public static void GameLose()
     {
         Debug.Log("You have lost!");
         SceneManager.LoadScene(0);
+        ResetScore();
+        
     }
 
     public static void GameWin()
     {
         Debug.Log("You have won!");
         SceneManager.LoadScene(0);
+        ResetScore();
     }
 }
