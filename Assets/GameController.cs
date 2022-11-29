@@ -8,10 +8,24 @@ public class GameController : MonoBehaviour
 
     private static int score;
 
+    //Pooling on the pinballs
+    private const int ballPoolSize = 2;
+    public static GameObject[] ballPool;
+
+    [SerializeField]
+    private GameObject ballPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        ballPool = new GameObject[ballPoolSize];
+
+        for(int i = 0; i < ballPoolSize; i++){
+            ballPool[i] = Instantiate(ballPrefab);
+            ballPool[i].SetActive(false);
+            ballPool[i].GetComponent<Ball>().id = i;
+            
+        }
     }
 
     // Update is called once per frame
@@ -44,5 +58,22 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("You have won!");
         SceneManager.LoadScene(0);
+    }
+
+    public static void BallDeactivate(int id){
+        ballPool[id].SetActive(false);
+    }
+
+    public static GameObject BallNext(){
+        for(int i = 0; i < ballPoolSize; i++){
+            Debug.Log("Checking ball " + i);
+            if(!ballPool[i].activeSelf){
+                ballPool[i].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                ballPool[i].SetActive(true);
+                return ballPool[i];
+            }
+        }
+        Debug.Log("No balls available");
+        return null;
     }
 }

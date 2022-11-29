@@ -9,11 +9,17 @@ public class Ball : MonoBehaviour
 
     private Powerup powerup;
 
-    // Start is called before the first frame update
+    public int id {get; set;}
+
+    // Awake runs before OnEnable (Start runs after OnEnable)
     void Start()
     {
         this.powerup = new PowerupNone();
 
+        
+    }
+
+    public void activate(){
         StartCoroutine(checkHeight());
     }
 
@@ -28,8 +34,8 @@ public class Ball : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
         //Ball below y=0
-        shooter.canFire = true;
-        Destroy(gameObject);
+        Shoot.canFire = true;
+        GameController.BallDeactivate(id);
         if(Shoot.ammo <= 0){
             GameController.GameLose(GameController.LossReason.OutOfAmmo);
         }

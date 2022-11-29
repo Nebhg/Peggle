@@ -12,7 +12,7 @@ public class Shoot : MonoBehaviour
     public static event ShootAction OnShoot;
    
 
-    public bool canFire {get; set;}
+    public static bool canFire {get; set;}
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +37,17 @@ public class Shoot : MonoBehaviour
         if(ammo > 0 && canFire)
         {
             
-            GameObject PinballIns = Instantiate(Pinball,transform.position,transform.rotation);
+            //GameObject PinballIns = Instantiate(Pinball,transform.position,transform.rotation);
+            GameObject PinballIns = GameController.BallNext();
+            PinballIns.transform.position = transform.position;
+            PinballIns.transform.rotation = transform.rotation;
             PinballIns.GetComponent<Rigidbody2D>().velocity = -transform.up * LaunchForce;
-            PinballIns.GetComponent<Ball>().shooter = this;
+            PinballIns.GetComponent<Ball>().activate();
+
             ammo--;
 
             canFire = false;
+            
             OnShoot();
         }
         Debug.Log("You have " + ammo + " remaining!");
