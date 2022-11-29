@@ -38,11 +38,9 @@ public class Shoot : MonoBehaviour
         {
             
             //GameObject PinballIns = Instantiate(Pinball,transform.position,transform.rotation);
-            GameObject PinballIns = GameController.BallNext();
-            PinballIns.transform.position = transform.position;
-            PinballIns.transform.rotation = transform.rotation;
+            GameObject PinballIns = GameController.BallNext(transform.position, transform.rotation);
             PinballIns.GetComponent<Rigidbody2D>().velocity = -transform.up * LaunchForce;
-            PinballIns.GetComponent<Ball>().activate();
+            
 
             ammo--;
 

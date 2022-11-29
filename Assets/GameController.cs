@@ -61,15 +61,19 @@ public class GameController : MonoBehaviour
     }
 
     public static void BallDeactivate(int id){
+        ballPool[id].GetComponent<TrailRenderer>().Clear();
         ballPool[id].SetActive(false);
     }
 
-    public static GameObject BallNext(){
+    public static GameObject BallNext(Vector3 position, Quaternion rotation){
         for(int i = 0; i < ballPoolSize; i++){
             Debug.Log("Checking ball " + i);
             if(!ballPool[i].activeSelf){
-                ballPool[i].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                ballPool[i].transform.position = position;
+                ballPool[i].transform.rotation = rotation;
+                ballPool[i].GetComponent<Rigidbody2D>().velocity = Vector2.zero;              
                 ballPool[i].SetActive(true);
+                ballPool[i].GetComponent<Ball>().activate();
                 return ballPool[i];
             }
         }
