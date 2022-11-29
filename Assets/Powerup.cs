@@ -6,7 +6,7 @@ public interface Powerup
 {
 
     //Setup runs when the ball is fired
-    public void setup();
+    public void setup(GameObject ball);
 
     //Stop and clean up any unfinished tasks (when ball is disabled)
     //Avoids race conditions

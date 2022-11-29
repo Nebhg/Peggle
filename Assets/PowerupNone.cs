@@ -6,7 +6,7 @@ public class PowerupNone : MonoBehaviour, Powerup
 {
 
     //Do nothing
-    public void setup(){}
+    public void setup(GameObject ball){}
     public void stop(){}
 
     //Name of the powerup

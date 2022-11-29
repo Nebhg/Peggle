@@ -9,15 +9,18 @@ public class PowerupNoGravity : MonoBehaviour, Powerup
     const float time = 2f;
 
     float initialScale;
+    GameObject ball;
 
     public static string name = "No Gravity";
 
      
-    public void setup()
+    public void setup(GameObject ball)
     {
+        this.ball = ball;
+
         //Disable gravity
-        initialScale = gameObject.GetComponent<Rigidbody2D>().gravityScale;
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        initialScale = ball.GetComponent<Rigidbody2D>().gravityScale;
+        ball.GetComponent<Rigidbody2D>().gravityScale = 0f;
 
         //Switch gravity back on after a few seconds
         StartCoroutine(delayedNormalGravity());
@@ -34,6 +37,6 @@ public class PowerupNoGravity : MonoBehaviour, Powerup
         //Wait for a certain amount of time
         yield return new WaitForSeconds(time);
         //Set gravity back to normal
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = initialScale;
+        this.ball.GetComponent<Rigidbody2D>().gravityScale = initialScale;
     }
 }

@@ -7,20 +7,23 @@ public class Ball : MonoBehaviour
 
     public Shoot shooter {get; set;}
 
-    private Powerup powerup;
+    public Powerup powerup;
 
     public int id {get; set;}
 
     // Awake runs before OnEnable (Start runs after OnEnable)
-    void Start()
+    void Awake()
     {
-        this.powerup = new PowerupNone();
+        powerup = new PowerupNoGravity();
+        
 
         
     }
 
     public void activate(){
         StartCoroutine(checkHeight());
+        powerup.setup(gameObject);
+        
     }
 
     // Update is called once per frame
@@ -34,6 +37,7 @@ public class Ball : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
         //Ball below y=0
+        powerup.stop();
         Shoot.canFire = true;
         GameController.BallDeactivate(id);
         if(Shoot.ammo <= 0){
