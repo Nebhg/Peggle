@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour
     {
         this.powerup = new PowerupNone();
 
-        StartCoroutine(checkHeight);
+        StartCoroutine(checkHeight());
     }
 
     // Update is called once per frame

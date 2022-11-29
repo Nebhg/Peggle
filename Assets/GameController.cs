@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
     
     public enum LossReason {OutOfAmmo}
 
-    public static void GameLose(LossReason)
+    public static void GameLose(LossReason reason)
     {
         Debug.Log("You have lost!");
         SceneManager.LoadScene(0);
