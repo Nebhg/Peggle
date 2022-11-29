@@ -20,6 +20,8 @@ public class GameController : MonoBehaviour
         
     }
 
+    
+
     public static void AddScore(int points)
     {
         score += points;
@@ -29,8 +31,10 @@ public class GameController : MonoBehaviour
     {
         return score;
     }
+    
+    public enum LossReason {OutOfAmmo}
 
-    public static void GameLose()
+    public static void GameLose(LossReason)
     {
         Debug.Log("You have lost!");
         SceneManager.LoadScene(0);
