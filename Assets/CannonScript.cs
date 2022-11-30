@@ -14,26 +14,28 @@ public class CannonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PauseMenu.GameIsPaused == false)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //get point on plane y=0
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //get point on plane y=0
+            //Create a plane perpendicular to the z axis at the origin
+            //This essentially serves as the new 2D "screen" in the 3D scene
+            Plane plane = new Plane(Vector3.forward, Vector3.zero);
 
-        //Create a plane perpendicular to the z axis at the origin
-        //This essentially serves as the new 2D "screen" in the 3D scene
-        Plane plane = new Plane(Vector3.forward, Vector3.zero);
+            //Raycast from the camera to the plane
+            float distance;
+            plane.Raycast(ray, out distance);
 
-        //Raycast from the camera to the plane
-        float distance;
-        plane.Raycast(ray, out distance);
+            //Get the intersection point
+            Vector3 point = ray.GetPoint(distance);
 
-        //Get the intersection point
-        Vector3 point = ray.GetPoint(distance);
-
-        //Cast the point into 2D to work with 2D physics
-        Vector2 MousePos = point;
-        Vector2 CannonPos = transform.position;
-        direction = MousePos - CannonPos; //calculate direction
-        FaceMouse();
+            //Cast the point into 2D to work with 2D physics
+            Vector2 MousePos = point;
+            Vector2 CannonPos = transform.position;
+            direction = MousePos - CannonPos; //calculate direction
+            FaceMouse();
+        }
     }
 
     void FaceMouse()
