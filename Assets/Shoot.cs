@@ -34,7 +34,7 @@ public class Shoot : MonoBehaviour
 
     void Fire()
     {
-        if(ammo > 0 && canFire)
+        if(ammo > 0 && canFire && !PauseMenu.GameIsPaused)
         {
             
             //GameObject PinballIns = Instantiate(Pinball,transform.position,transform.rotation);
