@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour
     // Awake runs before OnEnable (Start runs after OnEnable)
     void Start()
     {
-        this.powerup = new PowerupNone();
+        this.powerup = new PowerupNoGravity();
 
         
     }
