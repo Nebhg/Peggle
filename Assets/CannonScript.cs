@@ -15,14 +15,18 @@ public class CannonScript : MonoBehaviour
     void Update()
     {
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //get point on plane y=0
-        Plane plane = new Plane(Vector3.up, Vector3.zero);
+        if(PauseMenu.GameIsPaused == false)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //get point on plane y=0
+            Plane plane = new Plane(Vector3.up, Vector3.zero);
 
-        Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 CannonPos = transform.position;
-        direction = MousePos - CannonPos; //calculate direction
-        FaceMouse();
+            Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 CannonPos = transform.position;
+            direction = MousePos - CannonPos; //calculate direction
+            FaceMouse();
+        }
+        
     }
 
     void FaceMouse()
