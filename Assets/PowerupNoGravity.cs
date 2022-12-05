@@ -12,9 +12,15 @@ public class PowerupNoGravity : MonoBehaviour, Powerup
 
     public static string name = "No Gravity";
 
+    private GameObject effectLowG;
+
      
     public void setup()
     {
+
+        effectLowG = gameObject.transform.Find("EffectLowG").gameObject;
+        effectLowG.SetActive(true);
+
         //Disable gravity
         initialScale = gameObject.GetComponent<Rigidbody2D>().gravityScale;
         gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
@@ -28,12 +34,18 @@ public class PowerupNoGravity : MonoBehaviour, Powerup
     public void stop(){
         //Stop the coroutine
         StopCoroutine(delayedNormalGravity());
+        normalGravity();
     }
 
     IEnumerator delayedNormalGravity(){
         //Wait for a certain amount of time
         yield return new WaitForSeconds(time);
         //Set gravity back to normal
+        normalGravity();
+    }
+
+    private void normalGravity(){
         gameObject.GetComponent<Rigidbody2D>().gravityScale = initialScale;
+        effectLowG.SetActive(false);
     }
 }
