@@ -10,6 +10,6 @@ public class PowerupNone : MonoBehaviour, Powerup
     public void stop(){}
 
     //Name of the powerup
-    public static string name = "None";
+    public static string powerupName = "None";
 
 }

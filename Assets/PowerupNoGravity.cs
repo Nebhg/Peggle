@@ -10,7 +10,7 @@ public class PowerupNoGravity : MonoBehaviour, Powerup
 
     float initialScale;
 
-    public static string name = "No Gravity";
+    public static string powerupName = "No Gravity";
 
     private GameObject effectLowG;
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,20 +9,26 @@ public class Ball : MonoBehaviour
     public Shoot shooter {get; set;}
 
     public Powerup powerup;
-    public Powerup nextPowerup;
+    public Type nextPowerup;
 
     public int id {get; set;}
+
+    public static Type[] powerups = 
+    {
+        typeof(PowerupNoGravity),
+        typeof(PowerupSplit)
+    };
 
     // Awake runs before OnEnable (Start runs after OnEnable)
     void Start()
     {
 
-
+        nextPowerup = typeof(PowerupNoGravity);
         
     }
 
     public void activate(){
-        this.powerup = gameObject.AddComponent(typeof(nextPowerup)) as Powerup;
+        this.powerup = gameObject.AddComponent(typeof(PowerupNoGravity)) as Powerup;
         this.powerup.setup();        
         StartCoroutine(checkHeight());
 

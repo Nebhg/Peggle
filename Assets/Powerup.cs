@@ -13,6 +13,6 @@ public interface Powerup
     public void stop();
 
     //Name of the powerup
-    public static string name;
+    public static string powerupName;
 
 }
