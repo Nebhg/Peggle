@@ -9,26 +9,24 @@ public class Ball : MonoBehaviour
     public Shoot shooter {get; set;}
 
     public Powerup powerup;
-    public Type nextPowerup;
 
+    public static Queue<Powerup> nextPowerups = new Queue<Powerup>();
     public int id {get; set;}
 
-    public static Type[] powerups = 
-    {
-        typeof(PowerupNoGravity),
-        typeof(PowerupSplit)
-    };
+
+
+    [SerializeField] private Powerup[] powerups;
 
     // Awake runs before OnEnable (Start runs after OnEnable)
-    void Start()
+    void Awake()
     {
 
-        nextPowerup = typeof(PowerupNoGravity);
+      this.powerup = powerups[2];
         
     }
 
     public void activate(){
-        this.powerup = gameObject.AddComponent(typeof(PowerupNoGravity)) as Powerup;
+        
         this.powerup.setup();        
         StartCoroutine(checkHeight());
 

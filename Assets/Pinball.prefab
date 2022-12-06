@@ -96,6 +96,9 @@ GameObject:
   - component: {fileID: -1430496351240814720}
   - component: {fileID: -9222556638804524690}
   - component: {fileID: 4231604252883891678}
+  - component: {fileID: 3868583908178147115}
+  - component: {fileID: 2744428825836000292}
+  - component: {fileID: -376000985924413754}
   - component: {fileID: 6888653933295752949}
   m_Layer: 0
   m_Name: Pinball
@@ -220,6 +223,47 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 660a0ffdf53467d44a11fa92c50b408a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerup: {fileID: 0}
+  powerups:
+  - {fileID: 2744428825836000292}
+  - {fileID: 3868583908178147115}
+  - {fileID: -376000985924413754}
+--- !u!114 &3868583908178147115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614418350543300172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c23be4d1ef11884689630e00f07cfd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2744428825836000292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614418350543300172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a147b3399c1b64f84d45dbea3c3c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-376000985924413754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614418350543300172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39227fece63b7142a760bbcb31361f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!96 &6888653933295752949

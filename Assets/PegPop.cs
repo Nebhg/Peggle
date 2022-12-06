@@ -34,6 +34,7 @@ public class PegPop : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         GameController.AddScore(10);
+        Debug.Log("Pegs " + PegSelector.targetCount);
 
         OnPop();
         //Debug.Log("popped! Total Points: " + points);

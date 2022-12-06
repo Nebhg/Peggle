@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerupNoGravity : MonoBehaviour, Powerup
+public class PowerupNoGravity : Powerup
 {
 
 
@@ -10,12 +10,12 @@ public class PowerupNoGravity : MonoBehaviour, Powerup
 
     float initialScale;
 
-    public static string powerupName = "No Gravity";
+    public override string powerupName { get;} = "No Gravity"; 
 
     private GameObject effectLowG;
 
      
-    public void setup()
+    public override void setup()
     {
 
         effectLowG = gameObject.transform.Find("EffectLowG").gameObject;
@@ -31,7 +31,7 @@ public class PowerupNoGravity : MonoBehaviour, Powerup
     }
 
 
-    public void stop(){
+    public override void stop(){
         //Stop the coroutine
         StopCoroutine(delayedNormalGravity());
         normalGravity();
