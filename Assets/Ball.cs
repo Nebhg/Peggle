@@ -52,5 +52,9 @@ public class Ball : MonoBehaviour
 
     }
 
+    public static void randomPowerup(){
+
+    }
+
 
 }
