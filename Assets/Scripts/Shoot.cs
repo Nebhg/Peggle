@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Shoot : MonoBehaviour
 {
     public static int ammo {get; set;}
@@ -10,7 +11,7 @@ public class Shoot : MonoBehaviour
 
     public delegate void ShootAction();
     public static event ShootAction OnShoot;
-   
+    public AudioClip ShootSound; 
 
     public static bool canFire {get; set;}
 
@@ -34,7 +35,7 @@ public class Shoot : MonoBehaviour
 
     void Fire()
     {
-        if(ammo > 0 && canFire && !PauseMenu.GameIsPaused)
+        if(ammo > 0 && canFire && !MenuController.GameIsPaused)
         {
             
             //GameObject PinballIns = Instantiate(Pinball,transform.position,transform.rotation);
@@ -45,7 +46,7 @@ public class Shoot : MonoBehaviour
             ammo--;
 
             canFire = false;
-            
+            AudioSource.PlayClipAtPoint(ShootSound, new Vector3(transform.position.x, transform.position.y, -10));
             OnShoot();
         }
         Debug.Log("You have " + ammo + " remaining!");

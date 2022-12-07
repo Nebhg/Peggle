@@ -13,6 +13,12 @@ public class UiController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI scoreText;
 
+    [SerializeField]
+    private TextMeshProUGUI loseText;
+
+     [SerializeField]
+    private TextMeshProUGUI winText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +30,7 @@ public class UiController : MonoBehaviour
     {
         
     }
+
 
     private void OnEnable() {
         Shoot.OnShoot += updateAmmo;
@@ -41,5 +48,7 @@ public class UiController : MonoBehaviour
 
     void updateScore(){
         scoreText.text = GameController.GetScore().ToString();
+        loseText.text = GameController.GetScore().ToString();
+        winText.text = GameController.GetScore().ToString();
     }
 }

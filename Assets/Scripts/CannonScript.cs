@@ -14,7 +14,7 @@ public class CannonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PauseMenu.GameIsPaused == false)
+        if(MenuController.GameIsPaused == false)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //get point on plane y=0

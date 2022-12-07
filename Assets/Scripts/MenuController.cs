@@ -1,0 +1,111 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MenuController : MonoBehaviour
+{
+    // Start is called before the first frame update
+    public static bool GameIsPaused = false;
+    public GameObject pauseMenuUI;
+    public GameObject loseMenuUI;
+    public GameObject winMenuUI;
+    // Update is called once per frame
+    void Start()
+    {
+        Resume();
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+
+        if(GameController.gameSate == -1)
+        {
+            Lose();
+        }
+        else if(GameController.gameSate == 1)
+        {
+            Win();
+        }
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+    }
+
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+        GameController.ResetScore();
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quitting Game...");
+        Application.Quit();
+    }
+
+    public void Lose()
+    {
+        loseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        GameController.gameSate = 0;
+        GameController.ResetScore();
+        
+    }
+
+    public void Win()
+    {
+        winMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        GameController.gameSate = 0;
+        GameController.ResetScore();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+        GameController.ResetScore();
+    }
+    
+    public void NextLevel()
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            LoadMenu();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Time.timeScale = 1f;
+            GameController.ResetScore();   
+            winMenuUI.SetActive(false); 
+        }
+        
+    }
+}

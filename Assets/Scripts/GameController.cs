@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
 
     private static int score;
+    public static int gameSate = 0;
 
     //Pooling on the pinballs
     private const int ballPoolSize = 2;
@@ -56,16 +57,13 @@ public class GameController : MonoBehaviour
 
     public static void GameLose(LossReason reason)
     {
-        Debug.Log("You have lost!");
-        SceneManager.LoadScene(0);
+        gameSate = -1;
         ResetScore();
-        
     }
 
     public static void GameWin()
     {
-        Debug.Log("You have won!");
-        SceneManager.LoadScene(0);
+        gameSate = 1;
         ResetScore();
     }
 
