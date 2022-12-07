@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerupNone : MonoBehaviour, Powerup
+public class PowerupNone : Powerup
 {
 
     //Do nothing
-    public void setup(){}
-    public void stop(){}
+    public override void setup(){
+        Debug.Log("aaaa");
+    }
+    public override void stop(){}
 
     //Name of the powerup
-    public static string name = "None";
+    public override string powerupName {get;} = "None";
 
 }

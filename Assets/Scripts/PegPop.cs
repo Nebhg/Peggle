@@ -40,6 +40,8 @@ public class PegPop : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(PopSound, new Vector3(transform.position.x, transform.position.y, -10));
         GameController.AddScore(10);
+        Debug.Log("Pegs " + PegSelector.targetCount);
+
         OnPop();
         //Debug.Log("popped! Total Points: " + points);
         PegSelector.targetCount -= type == PegSelector.PegType.Target ? 1 : 0;
