@@ -11,6 +11,11 @@ public class PegSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("SCENE START");
+        pegs = null;
+        targets = null;
+        targetCount = 0;
+        
         pegs = new List<GameObject>(GameObject.FindGameObjectsWithTag("peg"));
         Debug.Log(pegs.Count);
         int requiredTargets = (int)(pegs.Count * 0.1f);
@@ -30,10 +35,12 @@ public class PegSelector : MonoBehaviour
 */
         //targetCount = targets.Count;
         
-        setManyPegTypes(PegType.Powerup, 1);
+        //setManyPegTypes(PegType.Powerup, 1);
         setManyPegTypes(PegType.Target, requiredTargets);
         
     }
+
+
 
     public enum PegType { Target, NonTarget, Powerup };
 

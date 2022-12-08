@@ -21,7 +21,7 @@ public class Ball : MonoBehaviour
     void Awake()
     {
 
-      this.powerup = powerups[2];
+      this.powerup = powerups[1];
         
     }
 
