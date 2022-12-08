@@ -13,7 +13,6 @@ public class Ball : MonoBehaviour
     public static Queue<Powerup> nextPowerups = new Queue<Powerup>();
     public int id {get; set;}
 
-    public static int activeBalls = 0;
 
 
 
@@ -29,7 +28,6 @@ public class Ball : MonoBehaviour
 
     public void activate(){
         
-        Ball.activeBalls++;
         this.powerup.setup();        
         StartCoroutine(checkHeight());
 
@@ -46,11 +44,14 @@ public class Ball : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
         //Ball below y=0
-        Ball.activeBalls--;
+
         this.powerup.stop();
         GameController.BallDeactivate(id);
+
+        Debug.Log("balls " + GameController.AvailableBalls());
         
-        if(Ball.activeBalls <= 0){
+        
+        if(GameController.AvailableBalls() == GameController.ballPoolSize){
             Shoot.canFire = true;         
             if(Shoot.ammo <= 0){
                 GameController.GameLose(GameController.LossReason.OutOfAmmo);

@@ -7,10 +7,12 @@ public class GameController : MonoBehaviour
 {
 
     private static int score;
-    public static int gameSate = 0;
+
+    public enum GameState {Playing, Win, Loss};
+    private static GameState gameSate = GameState.Playing;
 
     //Pooling on the pinballs
-    private const int ballPoolSize = 2;
+    public const int ballPoolSize = 2;
     public static GameObject[] ballPool;
 
     [SerializeField]
@@ -57,13 +59,13 @@ public class GameController : MonoBehaviour
 
     public static void GameLose(LossReason reason)
     {
-        gameSate = -1;
+        gameSate = GameState.Loss;
         ResetScore();
     }
 
     public static void GameWin()
     {
-        gameSate = 1;
+        gameSate = GameState.Win;
         ResetScore();
     }
 
@@ -86,5 +88,23 @@ public class GameController : MonoBehaviour
         }
         Debug.Log("No balls available");
         return null;
+    }
+
+    public static int AvailableBalls(){
+        int count = 0;
+        for(int i = 0; i < ballPoolSize; i++){
+            if(!ballPool[i].activeSelf){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void UpdateGameState(GameState newState){
+        gameSate = newState;
+    }
+
+    public static GameState GetGameState(){
+        return gameSate;
     }
 }

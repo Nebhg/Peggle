@@ -29,11 +29,11 @@ public class MenuController : MonoBehaviour
             }
         }
 
-        if(GameController.gameSate == -1)
+        if(GameController.GetGameState() == GameController.GameState.Loss)
         {
             Lose();
         }
-        else if(GameController.gameSate == 1)
+        else if(GameController.GetGameState() == GameController.GameState.Win)
         {
             Win();
         }
@@ -72,7 +72,7 @@ public class MenuController : MonoBehaviour
         loseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        GameController.gameSate = 0;
+        GameController.UpdateGameState(GameController.GameState.Playing);
         GameController.ResetScore();
         
     }
@@ -82,7 +82,7 @@ public class MenuController : MonoBehaviour
         winMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        GameController.gameSate = 0;
+        GameController.UpdateGameState(GameController.GameState.Playing);
         GameController.ResetScore();
     }
 
