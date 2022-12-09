@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerupNone : Powerup
 {
 
+    public override Type type {get;} = Type.None;
     //Do nothing
     public override void setup(){
         Debug.Log("aaaa");
@@ -12,6 +13,6 @@ public class PowerupNone : Powerup
     public override void stop(){}
 
     //Name of the powerup
-    public override string powerupName {get;} = "None";
+
 
 }

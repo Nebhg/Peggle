@@ -61,12 +61,14 @@ public class GameController : MonoBehaviour
     {
         gameSate = GameState.Loss;
         ResetScore();
+        cleanupAfterLevel();
     }
 
     public static void GameWin()
     {
         gameSate = GameState.Win;
         ResetScore();
+        cleanupAfterLevel();
     }
 
     public static void BallDeactivate(int id){
@@ -74,7 +76,11 @@ public class GameController : MonoBehaviour
         ballPool[id].SetActive(false);
     }
 
-    public static GameObject BallNext(Vector3 position, Quaternion rotation){
+    public static void cleanupAfterLevel(){
+        Ball.nextPowerups.Clear();
+    }
+
+    public static GameObject BallNext(Vector3 position, Quaternion rotation, bool setPowerup = false){
         for(int i = 0; i < ballPoolSize; i++){
             Debug.Log("Checking ball " + i);
             if(!ballPool[i].activeSelf){
@@ -82,6 +88,7 @@ public class GameController : MonoBehaviour
                 ballPool[i].transform.rotation = rotation;
                 ballPool[i].GetComponent<Rigidbody2D>().velocity = Vector2.zero;              
                 ballPool[i].SetActive(true);
+                if(setPowerup) ballPool[i].GetComponent<Ball>().nextPowerup();      
                 ballPool[i].GetComponent<Ball>().activate();
                 return ballPool[i];
             }

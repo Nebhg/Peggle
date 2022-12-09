@@ -5,6 +5,8 @@ using UnityEngine;
 public class PowerupSplit : Powerup
 {
 
+    public override Type type {get;} = Type.Splitball;
+
     //Do nothing
     public override void setup(){
         StartCoroutine(delay());
@@ -14,7 +16,7 @@ public class PowerupSplit : Powerup
     }
 
     //Name of the powerup
-    public override string powerupName {get;} = "Split Ball";
+
 
     IEnumerator delay(){
         yield return new WaitForSeconds(0.1f);
@@ -23,5 +25,7 @@ public class PowerupSplit : Powerup
         Rigidbody2D newRb = newBall.GetComponent<Rigidbody2D>();
         newRb.velocity = -myRb.velocity;
     }
+
+    
 
 }

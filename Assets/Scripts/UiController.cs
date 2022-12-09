@@ -16,13 +16,18 @@ public class UiController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI loseText;
 
-     [SerializeField]
+    [SerializeField]
     private TextMeshProUGUI winText;
+
+    [SerializeField]
+    private TextMeshProUGUI powerupText;
+
+    private static UiController mainInstance;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        mainInstance = this;
     }
 
     // Update is called once per frame
@@ -50,5 +55,10 @@ public class UiController : MonoBehaviour
         scoreText.text = GameController.GetScore().ToString();
         loseText.text = GameController.GetScore().ToString();
         winText.text = GameController.GetScore().ToString();
+    }
+
+    public static void updatePowerupText(){ 
+        string nextName = Powerup.powerupNameMap[Ball.getNextPowerup(false)];
+        mainInstance.powerupText.text = "Next Powerup: " + nextName;
     }
 }

@@ -5,12 +5,13 @@ using UnityEngine;
 public class PowerupNoGravity : Powerup
 {
 
+    public override Type type {get;} = Type.NoGravity;
 
     const float time = 2f;
 
     float initialScale;
 
-    public override string powerupName { get;} = "No Gravity"; 
+
 
     private GameObject effectLowG;
 

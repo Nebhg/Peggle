@@ -2665,6 +2665,7 @@ MonoBehaviour:
   scoreText: {fileID: 268006223111559241}
   loseText: {fileID: 3351379681027127252}
   winText: {fileID: 2671000821459810435}
+  powerupText: {fileID: 8585006791453894574}
 --- !u!1 &268006222898760706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,7 +2678,7 @@ GameObject:
   - component: {fileID: 268006222898760707}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

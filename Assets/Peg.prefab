@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  PopSound: {fileID: 8300000, guid: c645d511f9cc0cb47bc415add65f09ac, type: 3}
+  PopSound: {fileID: 8300000, guid: ef5af3947abeb7b41a09d817c0f9bbb7, type: 3}
   targetMaterial: {fileID: 2100000, guid: 90663755973eed844a06c73f55d8cdbb, type: 2}
   nonTargetMaterial: {fileID: 2100000, guid: 5430fa2ca9bc0c645a1eb8d30d09cb83, type: 2}
   powerupMaterial: {fileID: 2100000, guid: d080eb4bb4fdb6d4da30a330fcce80d0, type: 2}
@@ -215,7 +215,7 @@ AudioSource:
   m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c645d511f9cc0cb47bc415add65f09ac, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ef5af3947abeb7b41a09d817c0f9bbb7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

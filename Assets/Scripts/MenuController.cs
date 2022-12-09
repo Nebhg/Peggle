@@ -59,6 +59,7 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
         GameController.ResetScore();
+        GameController.cleanupAfterLevel();
     }
 
     public void QuitGame()
@@ -74,6 +75,7 @@ public class MenuController : MonoBehaviour
         GameIsPaused = true;
         GameController.UpdateGameState(GameController.GameState.Playing);
         GameController.ResetScore();
+        GameController.cleanupAfterLevel();
         
     }
 
@@ -84,6 +86,7 @@ public class MenuController : MonoBehaviour
         GameIsPaused = true;
         GameController.UpdateGameState(GameController.GameState.Playing);
         GameController.ResetScore();
+        GameController.cleanupAfterLevel();
     }
 
     public void Restart()
@@ -91,6 +94,7 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
         GameController.ResetScore();
+        GameController.cleanupAfterLevel();
     }
     
     public void NextLevel()
@@ -104,6 +108,7 @@ public class MenuController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Time.timeScale = 1f;
             GameController.ResetScore();   
+            GameController.cleanupAfterLevel();
             winMenuUI.SetActive(false); 
         }
         

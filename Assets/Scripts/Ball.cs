@@ -10,11 +10,16 @@ public class Ball : MonoBehaviour
 
     public Powerup powerup;
 
-    public static Queue<Powerup> nextPowerups = new Queue<Powerup>();
+    //Use a static queue because we want to share the same queue between all balls
+    public static Queue<Powerup.Type> nextPowerups = new Queue<Powerup.Type>();
     public int id {get; set;}
 
-
-
+    public static Powerup.Type[] powerupTypeMap = 
+    {
+        Powerup.Type.None, 
+        Powerup.Type.NoGravity, 
+        Powerup.Type.Splitball
+    };
 
     [SerializeField] private Powerup[] powerups;
 
@@ -22,15 +27,20 @@ public class Ball : MonoBehaviour
     void Awake()
     {
 
-      this.powerup = powerups[2];
+      this.powerup = powerups[0];
         
     }
 
     public void activate(){
         
+        
         this.powerup.setup();        
         StartCoroutine(checkHeight());
 
+    }
+
+    public void nextPowerup(){
+        this.powerup = powerupTypeToPowerup(getNextPowerup(true));
     }
 
     // Update is called once per frame
@@ -60,8 +70,31 @@ public class Ball : MonoBehaviour
 
     }
 
-    public static void randomPowerup(){
+    public static void enqueueRandomPowerup(){
+        //Skip first (poerup none) powerup
+        Powerup.Type randPowerup = powerupTypeMap[UnityEngine.Random.Range(1, powerupTypeMap.Length)];
+        nextPowerups.Enqueue(randPowerup);
+    }
 
+    //Each ball has a local instance of the Powerup script attached to itself
+    //So we need to map the static Powerup.Type to the local Powerup instance
+    private Powerup powerupTypeToPowerup(Powerup.Type type){
+        int index = Array.IndexOf(powerupTypeMap, type);
+        return powerups[index];
+    }
+
+    public void setPowerup(Powerup.Type type){
+        this.powerup = powerupTypeToPowerup(type);
+    }
+
+    public static Powerup.Type getNextPowerup(bool dequeue = false){
+        Powerup.Type nextType;
+        if(Ball.nextPowerups.Count == 0){
+            nextType = Powerup.Type.None;
+        }else{
+            nextType = dequeue ? Ball.nextPowerups.Dequeue() : Ball.nextPowerups.Peek();
+        }    
+        return nextType;
     }
 
 

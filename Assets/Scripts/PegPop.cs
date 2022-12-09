@@ -44,12 +44,21 @@ public class PegPop : MonoBehaviour
 
         OnPop();
         //Debug.Log("popped! Total Points: " + points);
-        PegSelector.targetCount -= type == PegSelector.PegType.Target ? 1 : 0;
+
+        //Subtract from target count if target
+        PegSelector.targetCount -= (type == PegSelector.PegType.Target) ? 1 : 0;
         if(PegSelector.targetCount == 0)
         {
             hasWon = true;
             GameController.GameWin();
         }
+
+        if(type == PegSelector.PegType.Powerup)
+        {
+            Ball.enqueueRandomPowerup();
+            UiController.updatePowerupText();
+        }
+        
 
         gameObject.SetActive(false);
         Debug.Log(PegSelector.targetCount + " targets left");

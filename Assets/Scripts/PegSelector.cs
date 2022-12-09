@@ -35,7 +35,7 @@ public class PegSelector : MonoBehaviour
 */
         //targetCount = targets.Count;
         
-        //setManyPegTypes(PegType.Powerup, 1);
+        setManyPegTypes(PegType.Powerup, 3);
         setManyPegTypes(PegType.Target, requiredTargets);
         
     }

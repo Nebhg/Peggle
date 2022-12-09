@@ -12,7 +12,16 @@ public abstract class Powerup : MonoBehaviour
     //Avoids race conditions
     public abstract void stop();
 
-    //Name of the powerup
-    public abstract string powerupName { get; }
+
+    public enum Type {None, NoGravity, Splitball};
+
+    public static Dictionary<Type, string> powerupNameMap {get;} = new Dictionary<Type, string>()
+    {
+        {Type.None, "None"},
+        {Type.NoGravity, "No Gravity"},
+        {Type.Splitball, "Split Ball"}
+    };
+
+    public abstract Type type { get; }
 
 }

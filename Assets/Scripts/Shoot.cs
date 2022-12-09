@@ -39,7 +39,7 @@ public class Shoot : MonoBehaviour
         {
             
             //GameObject PinballIns = Instantiate(Pinball,transform.position,transform.rotation);
-            GameObject PinballIns = GameController.BallNext(transform.position, transform.rotation);
+            GameObject PinballIns = GameController.BallNext(transform.position, transform.rotation, true);
             PinballIns.GetComponent<Rigidbody2D>().velocity = -transform.up * LaunchForce;
             
 
@@ -51,6 +51,7 @@ public class Shoot : MonoBehaviour
         }
         Debug.Log("You have " + ammo + " remaining!");
         //.AddForce(transform.up * LaunchForce);
+        UiController.updatePowerupText();
     }
 
 }
