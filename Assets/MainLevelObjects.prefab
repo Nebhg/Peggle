@@ -3635,7 +3635,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Next Powerup:  None'
+  m_text: 'Next Powerup: None'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8aa34253703f32b4e94d3f61e0bab784, type: 2}
   m_sharedMaterial: {fileID: 7730457190049418011, guid: 8aa34253703f32b4e94d3f61e0bab784, type: 2}
